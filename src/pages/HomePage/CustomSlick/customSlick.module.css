@@ -1,0 +1,52 @@
+.slick-prev::before, .slick-next::before {
+    font-size: 65px !important;
+    transition: 0.5s;
+}
+
+.width-item {
+    width: 100% !important;
+}
+
+.custom-dots {
+    width: 12px;
+    height: 12px;
+    margin-top: 20px;
+    border-radius:50%;
+    transition: 0.5s;
+    background-color: grey;
+}
+
+.custom-dots:hover {
+    background-color: #0000FF;
+}
+
+
+@media (max-width: 600px ) {
+    .custom-dots {
+        width: 8px;
+        height: 8px;
+        margin-top: 20px;
+        border-radius:50%;
+        transition: 0.5s;
+        background-color: grey;
+    }
+
+    .custom-dots-carousel {
+        width: 8px;
+        height: 8px;
+        border-radius:50%;
+        transition: 0.5s;
+        background-color: grey;
+    }
+}
+
+@media (max-width: 948px ) {
+    .slick-prev::before, .slick-next::before {
+        font-size: 60px !important;
+        transition: 0.5s;
+    }
+    
+}
+
+
+
