@@ -3,7 +3,6 @@ import { userInfoLocal } from "../../services/local.service";
 
 let initialState = {
   userInfo: userInfoLocal.get(),
-  isLogin: false,
 };
 
 const userSlice = createSlice({

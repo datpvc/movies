@@ -11,6 +11,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import spinnerSlice from "./redux/reducer/spinnerSlice";
 import moviesSlice from "./redux/reducer/moviesSlice";
 import userSlice from "./redux/reducer/userSlice";
+import seatSlice from "./redux/reducer/seatSlice";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 export const store = configureStore({
@@ -18,6 +19,7 @@ export const store = configureStore({
     spinnerSlice,
     moviesSlice,
     userSlice,
+    seatSlice,
   },
 });
 root.render(

@@ -1,0 +1,89 @@
+.screen {
+    border-bottom: 50px solid gray;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    height: 0;
+    width: 85%;
+    opacity: 0.5;
+    filter: drop-shadow(0px 128px 102px rgba(120, 103, 103, 0.38));
+}
+
+.seat {
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius:  5px;
+    cursor: pointer;
+    margin: 10px;
+    background-color: rgb(123,122,122);
+    color: #fff;
+}
+
+.vipSeat {
+    background-color: rgb(40,40,255);
+}
+
+.selectedSeat {
+    background-color: rgb(18,176,18) !important;
+}
+
+.reservedSeat {
+    background-color: rgb(255,40,40);
+    cursor: no-drop;
+}
+
+.mySeat {
+    background-color: rgb(246,246,246);
+    color: orange !important;
+    -webket-box-shadow: -1px 2px 18px -6px #000000;
+    box-shadow: -1px 2px 18px -6px #000000;
+}
+
+
+
+@media (max-width: 600px ) {
+    .screen {
+        border-bottom: 30px solid gray;
+        border-left: 20px solid transparent;
+        border-right: 20px solid transparent;
+        height: 0;
+        width: 85%;
+        opacity: 0.5;
+        filter: drop-shadow(0px 128px 102px rgba(120, 103, 103, 0.38));
+    }
+    .seat {
+        width: 22px;
+        height: 22px;
+        border: none;
+        border-radius:  3px;
+        cursor: pointer;
+        margin: 1px;
+        background-color: rgb(123,122,122);
+        color: #fff;
+    }
+
+    .vipSeat {
+        background-color: rgb(40,40,255);
+    }
+    
+    .selectedSeat {
+        background-color: rgb(18,176,18) !important;
+    }
+    
+    .reservedSeat {
+        background-color: rgb(255,40,40);
+        cursor: no-drop;
+    }
+
+    .mySeat {
+        background-color: rgb(246,246,246);
+        color: orange !important;
+        -webket-box-shadow: -1px 2px 18px -6px #000000;
+        box-shadow: -1px 2px 18px -6px #000000;
+    }
+}
+
+
+
+
+

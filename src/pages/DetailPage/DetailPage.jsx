@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { NavLink, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import { movieService } from "../../services/movie.service";
@@ -19,7 +19,6 @@ export default function DetailPage() {
     moTa,
     tenPhim,
     ngayKhoiChieu,
-    maPhim,
     heThongRapChieu,
     trailer,
   } = detailMovie;
@@ -98,11 +97,11 @@ export default function DetailPage() {
               >
                 Play Trailer
               </button>
-              <NavLink to={`/bookingticket/${maPhim}`} className="inline ml-1">
+              <a href="#movieSchedule" className="inline ml-1">
                 <span className="flex items-center justify-center p-2 lg:text-base md:text-base text-xs font-medium tracking-wide rounded bg-indigo-700 text-white hover:bg-indigo-500">
-                  Đặt Vé
+                  Mua vé
                 </span>
-              </NavLink>
+              </a>
             </div>
           </div>
         </div>

@@ -16,7 +16,7 @@ export default function UserNav() {
       return (
         <div className="flex items-center justify-center flex-wrap lg:space-x-4">
           <NavLink
-            to={"userinfo"}
+            to={"/userinfo"}
             className="text-white font-bold text-base text-left lg:text-center bg-indigo-500 hover:text-white hover:bg-indigo-700 lg:px-6 lg:py-2 rounded duration-500 transition-all w-full lg:w-auto p-2 mb-2 lg:m-0 space-x-1"
           >
             <span className="text-sm">

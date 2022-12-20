@@ -17,11 +17,9 @@ export default function RegisterPage() {
   let navigate = useNavigate();
   const onFinish = (values) => {
     let dataRegister = { ...values, maNhom: "GP03" };
-    console.log("dataRegister: ", dataRegister);
     userService
       .postRegister(dataRegister)
       .then((res) => {
-        console.log("res: ", res);
         setTimeout(() => {
           navigate("/login");
         }, 500);

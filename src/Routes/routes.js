@@ -3,6 +3,7 @@ import DetailPage from "../pages/DetailPage/DetailPage";
 import HomePage from "../pages/HomePage/HomePage";
 import LoginPage from "../pages/LoginPage/LoginPage";
 import RegisterPage from "../pages/RegisterPage/RegisterPage";
+import UserInfoPage from "../pages/UserInfoPage/UserInfoPage";
 
 export const routes = [
   {
@@ -29,5 +30,10 @@ export const routes = [
     key: 5,
     path: "/bookingticket/:id",
     component: <BookingTicketPage />,
+  },
+  {
+    key: 6,
+    path: "/userinfo",
+    component: <UserInfoPage />,
   },
 ];

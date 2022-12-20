@@ -14,8 +14,6 @@ export default function MovieNews() {
   const [newsReview, setNewsReview] = useState([]);
   const [newsDiscount, setNewsDiscount] = useState([]);
 
-  const arrNews = [newsFilm, newsReview, newsDiscount];
-
   const fetchNews = () => {
     getNews(FILM_URL, setNewsFilm);
     getNews(REVIEW_URL, setNewsReview);
@@ -28,7 +26,7 @@ export default function MovieNews() {
   let renderContent = (dataNews) => {
     if (dataNews.length > 0) {
       return (
-        <div className="lg:grid grid-cols-6 gap-4 text-left">
+        <div className="lg:grid grid-cols-6 gap-4 text-left z-0">
           <div className="col-span-3">
             <a href={dataNews[0].url}>
               <div className="rounded overflow-hidden">
@@ -171,7 +169,7 @@ export default function MovieNews() {
   ];
 
   return (
-    <div id="moviesNews" className="container mx-auto">
+    <div id="moviesNews" className="container mx-auto z-0">
       <div className="p-10">
         <Tabs defaultActiveKey="1" centered items={items} />
       </div>

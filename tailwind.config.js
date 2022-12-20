@@ -13,6 +13,9 @@ module.exports = {
       padding: {
         22: "86px",
       },
+      margin: {
+        22: "86px",
+      },
     },
     container: {
       // you can configure the container to be centered

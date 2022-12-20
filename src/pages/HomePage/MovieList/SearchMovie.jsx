@@ -13,6 +13,7 @@ export default function SearchMovie() {
   });
 
   let fetchMovieSchedule = () => {
+    if (!id) return;
     const params = {
       MaPhim: id,
     };

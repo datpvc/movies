@@ -27,14 +27,19 @@ export default function MovieItem({ movie, hanldeShowTrailer }) {
           {tenPhim}
         </h2>
         <div className="flex justify-between items-center w-full p-2 space-x-3">
+          <button
+            onClick={() => {
+              hanldeShowTrailer(trailer);
+            }}
+            className="w-1/2 "
+          >
+            <span className="flex items-center justify-center w-full p-1 lg:text-base md:text-sm text-xs font-semibold tracking-wide rounded bg-indigo-700 text-white hover:bg-indigo-500">
+              Trailer
+            </span>
+          </button>
           <NavLink to={`/detail/${maPhim}`} className="w-1/2">
             <span className="flex items-center justify-center w-full p-1 lg:text-base md:text-sm text-xs font-semibold tracking-wide rounded bg-indigo-700 text-white hover:bg-indigo-500">
               Chi tiết
-            </span>
-          </NavLink>
-          <NavLink to={`/bookingticket/${maPhim}`} className="w-1/2 ">
-            <span className="flex items-center justify-center w-full p-1 lg:text-base md:text-sm text-xs font-semibold tracking-wide rounded bg-indigo-700 text-white hover:bg-indigo-500">
-              Đặt vé
             </span>
           </NavLink>
         </div>
