@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
 import { setSelectedSeat } from "../../redux/reducer/seatSlice";
 import { bookingTicketService } from "../../services/bookingTicket.service";
+import { UserOutlined, CloseOutlined } from "@ant-design/icons";
 import "../BookingTicketPage/bookingTicket.css";
 
 export default function BookingTicketPage() {
@@ -77,9 +78,17 @@ export default function BookingTicketPage() {
             onClick={() => {
               dispatch(setSelectedSeat(seat));
             }}
-            className={`seat ${classVipSeat} ${classReservedSeat} ${classSelectedSeat} ${classMySeat}`}
+            className={`seat inline-flex justify-center items-center ${classVipSeat} ${classReservedSeat} ${classSelectedSeat} ${classMySeat}`}
           >
-            {seat.tenGhe}
+            {seat.daDat ? (
+              classMySeat !== "" ? (
+                <UserOutlined />
+              ) : (
+                <CloseOutlined />
+              )
+            ) : (
+              `${seat.tenGhe}`
+            )}
           </button>
           {(index + 1) % 16 === 0 ? <br /> : ""}
         </Fragment>
@@ -127,22 +136,30 @@ export default function BookingTicketPage() {
         </div>
         <div className="lg:mt-0 md:mt-1 mt-3">{renderSeat()}</div>
 
-        <div className="flex justify-center items-center space-x-10 mt-5 text-base font-bold">
-          <div>
-            <button className="seat reservedSeat"></button>
+        <div className="flex justify-center items-center pt-5 lg:text-base md:text-base text-xs font-bold lg:w-3/4 md:w-3/4 w-full m-auto">
+          <div className="w-1/5 flex flex-col justify-center items-center">
+            <button className="seat reservedSeat flex justify-center items-center">
+              <CloseOutlined />
+            </button>
             <p className="text-red-500">Đã mua</p>
           </div>
-          <div>
+          <div className="w-1/5 flex flex-col justify-center items-center">
             <button className="seat selectedSeat"></button>
             <p className="text-green-500">Đang mua</p>
           </div>
-          <div>
+          <div className="w-1/5 flex flex-col justify-center items-center">
             <button className="seat"></button>
             <p className="text-gray-500">Thường</p>
           </div>
-          <div>
+          <div className="w-1/5 flex flex-col justify-center items-center">
             <button className="seat vipSeat"></button>
             <p className="text-blue-500">Vip</p>
+          </div>
+          <div className="w-1/5 flex flex-col justify-center items-center">
+            <button className="seat mySeat flex justify-center items-center">
+              <UserOutlined />
+            </button>
+            <p className="text-orange-500">Ghế của bạn</p>
           </div>
         </div>
       </div>
@@ -232,8 +249,8 @@ export default function BookingTicketPage() {
             className="fixed top-0 left-0 w-full h-full bg-black opacity-50 z-10"
           ></div>
           <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 lg:text-2xl md:text-2xl text-xl font-bold bg-white lg:p-10 md:p-10 p-4 rounded shadow-2xl z-40 opacity-100 lg:w-1/3 md:w-1/2 w-4/5">
-            <div className="flex justify-center items-center m-auto w-20 h-20 text-red-500 text-4xl border-4 border-red-500 rounded-full">
-              <i className="fa fa-times"></i>
+            <div className="flex justify-center items-center m-auto w-20 h-20 text-green-500 text-4xl border-4 border-green-500 rounded-full">
+              <i className="fa fa-check"></i>
             </div>
             <p className="mt-4">Bạn đã mua vé thành công</p>
             <p className="lg:text-lg md:text-lg text-base font-semibold">
@@ -246,7 +263,7 @@ export default function BookingTicketPage() {
                 }}
                 className="flex items-center justify-center lg:p-3 md:p-3 p-2 lg:text-lg md:text-base text-sm font-semibold tracking-wide rounded bg-indigo-700 text-white hover:bg-indigo-500"
               >
-                Xem
+                Xem thông tin vé
               </button>
               <button
                 onClick={() => {
