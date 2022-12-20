@@ -2,16 +2,27 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { movieService } from "../../../services/movie.service";
 import moment from "moment";
+import { useNavigate } from "react-router-dom";
+import { userInfoLocal } from "../../../services/local.service";
+import MessageLogin from "../../../components/Message/MessageLogin";
 
 export default function SearchMovie() {
+  // Mã phim để call API lịch chiếu phim
   const [id, setId] = useState(null);
   const [movieSchedule, setMovieSchedule] = useState({});
   const [theaters, setTheaters] = useState([]);
   const [idTheaters, setIdTheaters] = useState("");
+  const [maLichChieu, setMalichChieu] = useState(null);
+  const [isMessage, setIsMessage] = useState(false);
+
+  let navigate = useNavigate();
+
+  // Danh sách phim từ redux
   let moviesList = useSelector((state) => {
     return state.moviesSlice.moviesReducer;
   });
 
+  // gọi API
   let fetchMovieSchedule = () => {
     if (!id) return;
     const params = {
@@ -40,6 +51,19 @@ export default function SearchMovie() {
       setIdTheaters(null);
     } else {
       setIdTheaters(e.target.value);
+    }
+  };
+
+  let hanldeChangeTime = (e) => {
+    setMalichChieu(e.target.value);
+  };
+
+  let hanldeBookkingTicket = () => {
+    let _userInfoLocal = userInfoLocal.get();
+    if (_userInfoLocal) {
+      navigate(`/bookingticket/${maLichChieu}`);
+    } else {
+      setIsMessage(true);
     }
   };
 
@@ -80,7 +104,7 @@ export default function SearchMovie() {
     if (index !== -1) {
       return theaters[index].lichChieuPhim?.map((item) => {
         return (
-          <option key={item.maLichChieu}>
+          <option value={item.maLichChieu} key={item.maLichChieu}>
             {moment(item.ngayChieuGioChieu).format("HH:MM ~ DD-MM-YYYY")}
           </option>
         );
@@ -126,14 +150,25 @@ export default function SearchMovie() {
           <option value={null}>Rạp</option>
           {renderTheatersOption()}
         </select>
-        <select className="lg:w-[320px] md:w-[150px] p-2 border rounded bg-slate-200">
+        <select
+          onChange={hanldeChangeTime}
+          className="lg:w-[320px] md:w-[150px] p-2 border rounded bg-slate-200"
+        >
           <option>Ngày giờ chiếu</option>
           {renderTime()}
         </select>
-        <button className="p-2 lg:text-base md:text-base text-xs font-medium tracking-wide rounded bg-indigo-700 text-white hover:bg-indigo-500">
+        <button
+          onClick={() => {
+            hanldeBookkingTicket();
+          }}
+          className="p-2 lg:text-base md:text-base text-xs font-medium tracking-wide rounded bg-indigo-700 text-white hover:bg-indigo-500"
+        >
           Mua vé ngay
         </button>
       </div>
+      {isMessage ? (
+        <MessageLogin navigate={navigate} setIsMessage={setIsMessage} />
+      ) : null}
     </div>
   );
 }
