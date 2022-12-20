@@ -114,7 +114,6 @@ export default function BookingTicketPage() {
       maLichChieu: id,
       danhSachVe: selectedSeats,
     };
-    console.log("dataBookingTicket: ", dataBookingTicket);
     bookingTicketService
       .postBookingTicket(dataBookingTicket)
       .then((res) => {
