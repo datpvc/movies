@@ -110,6 +110,7 @@ export default function BookingTicketPage() {
 
   // Người dùng đặt vé
   let hanldeBookingTicket = () => {
+    if (selectedSeats.length === 0) return;
     const dataBookingTicket = {
       maLichChieu: id,
       danhSachVe: selectedSeats,
@@ -244,6 +245,7 @@ export default function BookingTicketPage() {
           <div
             onClick={() => {
               setIsMessage(false);
+              window.location.reload();
             }}
             className="fixed top-0 left-0 w-full h-full bg-black opacity-50 z-10"
           ></div>

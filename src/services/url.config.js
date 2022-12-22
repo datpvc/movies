@@ -20,6 +20,21 @@ export const https = axios.create({
 // Add a request interceptor
 https.interceptors.request.use(
   function (config) {
+    config.headers = {
+      ...config.headers,
+      TokenCybersoft: TOKEN_CYBERSOFT,
+    };
+
+    const getToken = () => {
+      return userInfoLocal.get()?.accessToken;
+    };
+    const accessToken = getToken();
+    if (accessToken) {
+      config.headers = {
+        ...config.headers,
+        Authorization: `Bearer ${accessToken}`,
+      };
+    }
     // On Loadindg
     store.dispatch(setIsLoading(true));
     return config;
@@ -34,6 +49,7 @@ https.interceptors.request.use(
 https.interceptors.response.use(
   function (response) {
     // Off Loading
+
     store.dispatch(setIsLoading(false));
     return response;
   },
